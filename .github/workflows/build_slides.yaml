@@ -23,7 +23,7 @@ jobs:
         run: mkdir -p dist
 
       - name: Build HTML
-        run: npx @marp-team/marp-cli@latest slide-deck.md --theme ./custom.css
+        run: npx @marp-team/marp-cli@latest slide-deck.md --theme ./custom.css -o dist/slide-deck.html
 
       - name: Build PDF
         run: npx @marp-team/marp-cli@latest slide-deck.md --theme ./custom.css --allow-local-files -o dist/slide-deck.pdf
