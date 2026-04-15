@@ -1,0 +1,37 @@
+name: Build slides
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Build HTML
+        uses: KoharaKazuya/marp-cli-action@v4
+        with:
+          args: slide-deck.md --theme ./custom.css --allow-local-files -o dist/slide-deck.html
+
+      - name: Build PDF
+        uses: KoharaKazuya/marp-cli-action@v4
+        with:
+          args: slide-deck.md --theme ./custom.css --allow-local-files -o dist/slide-deck.pdf
+
+      - name: Upload HTML artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: slide-html
+          path: dist/slide-deck.html
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: slide-pdf
+          path: dist/slide-deck.pdf
