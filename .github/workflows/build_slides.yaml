@@ -12,26 +12,33 @@ jobs:
 
     steps:
       - name: Check out repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Create output directory
+        run: mkdir -p dist
 
       - name: Build HTML
-        uses: KoharaKazuya/marp-cli-action@v4
-        with:
-          args: slide-deck.md --theme ./custom.css --allow-local-files -o dist/slide-deck.html
+        run: npx @marp-team/marp-cli@latest slide-deck.md --theme ./custom.css
 
       - name: Build PDF
-        uses: KoharaKazuya/marp-cli-action@v4
-        with:
-          args: slide-deck.md --theme ./custom.css --allow-local-files -o dist/slide-deck.pdf
+        run: npx @marp-team/marp-cli@latest slide-deck.md --theme ./custom.css --allow-local-files -o dist/slide-deck.pdf
+
+      - name: Show build output
+        run: ls -lah dist
 
       - name: Upload HTML artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: slide-html
           path: dist/slide-deck.html
 
       - name: Upload PDF artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: slide-pdf
           path: dist/slide-deck.pdf
