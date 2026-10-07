@@ -2,32 +2,48 @@
 
 @import 'uncover';
 
+:root {
+    --color-accent: #165d8f;
+}
+
 section {
+    background-color: #f5f8fb;
     background-image: url('assets/background.png');
-    background-size: cover;
     background-position: center;
+    background-size: cover;
+}
+
+a {
+    color: var(--color-accent);
 }
 
 .two-columns {
-    margin-top: 35px;
-    column-count: 2;
-    column-gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
 }
 
-.two-columns p:first-child,
-.two-columns h2:first-child,
+.two-columns > div {
+    min-width: 0;
+}
+
 .two-columns h3:first-child,
-.two-columns ul:first-child,
-.two-columns ul li:first-child,
-.two-columns ul li p:first-child {
-    margin-top: 0 !important;
-}
-
-.two-columns p.break {
-    break-before: column;
+.two-columns ul:first-child {
     margin-top: 0;
 }
 
 section.small-text {
     font-size: 30px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
 }

@@ -1,8 +1,8 @@
 ---
 marp: true
-lang: de-CH
+lang: en
 title: Marp Template
-description: Marp template and example slides
+description: A Marp starter deck with a custom theme and example slides
 theme: custom
 transition: fade
 paginate: true
@@ -15,8 +15,6 @@ Marp template and example slides
 
 <https://github.com/norad32/marp-template>
 
-<style scoped>a { color: #36c; }</style>
-
 <!-- This is presenter note. You can write down notes through HTML comment. -->
 
 ---
@@ -24,9 +22,9 @@ Marp template and example slides
 <!-- _backgroundColor: "#123" -->
 <!-- _color: "#fff" -->
 
-## Custom background and text color
+## Theme background and text color
 
-This slide shows Marp frontmatter overrides for background and text color.
+This slide keeps the theme background while demonstrating a slide-level text color override.
 
 ---
 
@@ -47,21 +45,22 @@ This slide shows Marp frontmatter overrides for background and text color.
 ## Two columns
 
 <div class="two-columns">
-
-### Left column
-
-- Item 1
-- Item 2
-- Item 3
-
-<p class="break"></p>
-
-### Right column
-
-- Item A
-- Item B
-- Item C
-
+<div>
+<h3>Left column</h3>
+<ul>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3</li>
+</ul>
+</div>
+<div>
+<h3>Right column</h3>
+<ul>
+<li>Item A</li>
+<li>Item B</li>
+<li>Item C</li>
+</ul>
+</div>
 </div>
 
 ---

@@ -1,2 +1,4 @@
 slide-deck.html
 slide-deck.pdf
+dist/
+node_modules/

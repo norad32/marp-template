@@ -1,0 +1,25 @@
+{
+  "name": "marp-template",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build:html": "marp slide-deck.md --theme ./custom.css --output dist/slide-deck.html && node -e \"require('node:fs').cpSync('assets','dist/assets',{recursive:true})\"",
+    "build:pdf": "marp slide-deck.md --theme ./custom.css --allow-local-files --output dist/slide-deck.pdf",
+    "build": "npm run build:html && npm run build:pdf"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "4.5.1"
+  },
+  "overrides": {
+    "basic-ftp": "6.2.2",
+    "katex": "0.18.2",
+    "puppeteer-core": {
+      "@puppeteer/browsers@2.13.2": {
+        "extract-zip": "npm:dry-uninstall@0.3.0"
+      }
+    }
+  }
+}
